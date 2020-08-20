@@ -338,4 +338,5 @@ Overflow 설정:
   배경 속성을 모아 작성하는 속기법입니다.
 
 - 배경 기준: background-origin
+
 - 배경 클리핑: background-clip
