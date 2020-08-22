@@ -340,3 +340,91 @@ Overflow 설정:
 - 배경 기준: background-origin
 
 - 배경 클리핑: background-clip
+
+---
+
+- ## 200820 목요일
+
+## 유저 인터랙션 속성
+
+- [ hidden 속성 ] :  
+  모든 html 요소들은 hidden 속성을 가질 수 있으며, 요소에 설정되면 요소가 아직 페이지의 현재 상태와 직접적으로 관련이 없거나 페이지의 다른 부분에서 내용을 재사용하도록 선언하는 데 사용된다.  
+  브라우저는 hidden 속성이 설정된 요소를 화면에 렌더링하지 않는다.
+
+```html
+- 주의할 점 : 이 속성은 일반적으로 CSS를 사용해 구현 되므로 CSS 속성에 의해
+재정의 될 수 있음에 주의해야 합니다. 즉, hidden 속성이 적용된 요소에 display:
+block 스타일을 설정하면 화면에 렌더링 됩니다.
+
+<div hidden style="display: block">
+  hidden 속성이 설정 되었지만, 이 콘텐츠는 화면에 렌더링 됩니다.
+</div>
+
+- style="display: none;"만 먹이는 것은 그냥 보이지 않는다는 스타일을 지정해서
+전체 마크업의 맥락에 포함시키는 것이고 따라서 예컨대 스크린 리더가 내용을
+읽어주는 등 다른 미디어에서 처리될 수 있습니다. hidden(="hidden") 속성을 주는
+것은 전체 마크업의 맥락에서 배제해 버리는 차원이라고 볼 수 있다.
+```
+
+- [ tabindex 속성 ] :  
+  요소를 키보드로 탐색할 수 있도록 설정하거나, 제외 또는 순서대로 탐색할 수 있도록 설정할 수 있다.  
+  "(Tab)이동" 이란 용어는 순차적 포커스 탐색을 사용하여 포커스 가능(Focusable) 요소 사이를 이동하는 것을 의미한다."
+
+  - 폼 컨트롤 요소들 : input, button, textarea, select 등
+  - href 속성을 가진 요소들 : a, area
+  - controls 속성을 가진 요소들 : video, audio
+
+- [ accesskey 속성 ] :  
+  모든 html 요소는 accesskey 속성을 가질 수 있다. 속성 같은 키보드 단축키로 설정된다.  
+  하지만 accesskey 속성의 단축키는 브라우저와 운영체계 플랫폼에 의존하고 있어 운영체제마다 사용자 경험이 달라진다.  
+  쉽게말해 Windows 사용자와 Mac OSX 사용자가 사용하는 단축키는 달라진다.
+
+- [ contenteditable 속성 ] :  
+  contenteditable 속성이 설정된 요소는 사용자가 직접 편집할 수 있도록 만들어 준다. 값이 true 또는 빈 문자열("")일 경우 편집 허용.
+  값이 false 일 경우 편집을 허용하지 않음.
+
+- [ draggable 속성 ] :  
+  모든 html 요소는 draggable 속성을 가질 수 있다.
+  - 값이 true 일 경우 드래그(Drag) 가능.
+  - 값이 false 또는 빈 문자열("")일 경우 드래그 불가능.
+
+## 플로팅 레이아웃
+
+CSS 레이아웃 :  
+대표적인 레이아웃 테크닉인 플로팅(floating)과 포지셔닝(positioning), 그리고 플렉스박스(Flexbox), 그리드(Grid)가 있다.
+
+```
+일반적인 레이아웃 흐름 (Nomal layout flow) :
+
+html이 기본적으로 화면에 렌더링하는 것을 말합니다.
+마크업 순서대로 위에서 부터 아래 방향으로 나열됩니다. (css 레이아웃 미반영)
+```
+
+```
+플로팅 (Floating) 레이아웃
+float 속성을 사용해 박스를 왼쪽(left) 또는 오른쪽(right) 으로 "부유"시키는
+레이아웃 기법입니다. 설정 가능한 값은 다음과 같습니다.
+
+    + none
+    + left
+    + right
+```
+
+```css
+[예제]
+.css{
+    float: left;
+    height: 70px
+    margin-right: 5%
+    margin-bottom: 5%
+    background: #f4f4f4
+}
+.css_2{
+    widht:45%
+}
+```
+
+- 부모요소는 부유된 자식 요소를 감싸지 못 한다.  
+  그로 인해 [ clear: left;, right; both; 속성 ], 또는 [overflow: auto;, hidden;] 을 사용하여 부모 요소가 자식의 높이값을 감싸준다.
+
+---
