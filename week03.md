@@ -207,3 +207,210 @@ CSS 애니메이션을 만드려면 animation 속성과 이 속성의 하위 속
 
 - both  
   애니메이션은 앞뒤 양쪽 모두의 규칙을 따르므로 애니메이션 속성이 양방향으로 확장됩니다.
+
+---
+
+## 200826 수요일
+
+## 그레디언트
+
+CSS 그레이디언트는 < image > 자료형의 특별한 종류인 < gradient >로 나타내며 두 개 이상의 색 간의 점진적 전환을 표현합니다. 그레이디언트에는 선형(linear-gradient() 함수), 방사형(radial-gradient 함수), 각진 원형(conic-gradient 함수) 세 종류가 있으며, 각각의 변형본으로 계속해서 반복하는 repeating-linear-gradient, repeating-radial-gradient, repeating-conic-gradient 함수도 있습니다.
+
+그레이디언트는 배경처럼 < image >를 사용하는 곳에는 어디에나 적용할 수 있습니다. 그레이디언트는 동적으로 생성하므로, 비슷한 효과를 보기 위해 래스터 이미지를 사용하는 방식을 사용하지 않아도 됩니다. 또한 브라우저가 직접 생성하므로 확대했을 때 래스터 이미지보다 좋은 품질을 보이며 크기 조절도 즉시 가능합니다.
+
+## 1.선형(Linear) 그레디언트 :
+
+가장 기본적인 그레이디언트 종류를 생성하기 위해서는 두 가지의 색만 지정하면 됩니다. 각각의 색을 "색상 정지점"이라고 부릅니다. 최소 두 가지가 필요하지만, 제한 없이 원하는 만큼 추가할 수 있습니다.
+
+**[예시]**
+
+```css
+.simple-linear {
+  background: linear-gradient(blue, pink);
+}
+```
+
+**[방향전환]**  
+기본적으로, 선형 그레이디언트는 위에서 아래로 진행합니다. 그러나 방향을 지정함으로써 그레이디언트를 회전할 수 있습니다.
+
+```css
+.horizontal-gradient {
+  background: linear-gradient(to right, blue, pink);
+}
+```
+
+**[대각선 그레디언트]**  
+그레디언트가 한쪽 모서리에서 다른 쪽 모서리를 잇는 대각선 방향으로 진행하도록 할 수 있습니다.
+
+```css
+.diagonal-gradient {
+  background: linear-gradient(to bottom right, blue, pink);
+}
+```
+
+**[각도 사용]**  
+더 정밀하게 방향을 지정하고 싶다면 특정 각도를 지정할 수 있습니다.  
+각도를 사용할 때 0deg 는 아래쪽에서 위쪽으로 진행하는 선형 그레이디언트를, 90deg 는 왼쪽에서 오른쪽으로, 등등 시계 방향으로 회전합니다. 음의 각도는 시계 반대 방향으로 회전합니다.
+
+```css
+.angled-gradient {
+  background: linear-gradient(70deg, blue, pink);
+}
+```
+
+## 원형(Radial) 그레디언트
+
+**[Simple gradient]**
+
+```css
+.radial-gradient {
+  background-image: radial-gradient(cyan 0%, transparent 20%, salmon 40%);
+}
+```
+
+**[Non-centered gradient]**
+
+```css
+.radial-gradient {
+  background-image: radial-gradient(
+    farthest-corner at 40px 40px,
+    #f35 0%,
+    #43e 100%
+  );
+}
+```
+
+## border-radius :
+
+    border-radius 속성은 요소 테두리 경계의 꼭짓점을 둥글게 만듭니다. 하나의 값을 사용해 원형 꼭짓점을, 두 개의 값을 사용해 타원형 꼭짓점을 적용할 수 있습니다.
+    꼭짓점 반경은 요소의 테두리 존재 여부와는 별개로 전체 background에 적용됩니다. 원형 꼭짓점으로 인해 배경이 잘리는 지점은 background-clip 속성이 지정합니다.
+    border-collapse의 값이 collapse인 표 요소는 border-radius 속성의 영향을 받지 않습니다.
+
+**[예제]**
+
+```css
+border-radius: 30px;
+border-radius: 25% 10%;
+border-radius: 10% 30% 50% 70%;
+border-radius: 10% / 50%;
+border-radius: 10px 100px / 120px;
+border-radius: 50% 20% / 10% 40%;
+```
+
+**[값]**
+
+```
+- radius:
+  테두리의 각 꼭짓점 반지름을 나타내는 < length > 또는 < percentage >. 한 개 값 구문에서만 사용합니다.
+
+- top-left-and-bottom-right:
+왼쪽 위와 오른쪽 아래 꼭짓점의 반지름을 나타내는 < length > 또는 < percentage >. 두 개 값 구문에서만 사용합니다.
+
+- top-right-and-bottom-left:
+오른쪽 위와 왼쪽 아래 꼭짓점의 반지름을 나타내는 < length > 또는 < percentage >. 두 개 또는 세 개 값 구문에서만 사용합니다.
+
+- top-left:
+왼쪽 위 꼭짓점의 반지름을 나타내는 < length > 또는 < percentage >. 세 개 또는 네 개 값 구문에서만 사용합니다.
+
+- top-right:
+오른쪽 위 꼭짓점의 반지름을 나타내는 < length > 또는 < percentage >. 네 개 값 구문에서만 사용합니다.
+
+- bottom-right:
+오른쪽 아래 꼭짓점의 반지름을 나타내는 < length > 또는 < percentage >. 네 개 값 구문에서만 사용합니다.
+
+- bottom-left:
+왼쪽 아래 꼭짓점의 반지름을 나타내는 < length > 또는 < percentage >. 네 개 값 구문에서만 사용합니다.
+```
+
+- length:
+
+길이 값을 사용해 원의 반지름 또는 타원의 짧은반지름과 긴반지름을 지정합니다. 음의 값은 유효하지 않습니다.
+
+- percentage:
+
+백분율 값을 사용해 원의 반지름 또는 타원의 짧은반지름과 긴반지름을 지정합니다. 가로축 값은 요소 박스의 너비에 대한 백분율이고, 세로축 값은 박스의 높이에 대한 백분율입니다. 음의 값은 유효하지 않습니다.
+
+## box-shadow
+
+box-shadow CSS 속성은 요소의 테두리를 감싼 그림자 효과를 추가합니다. 쉼표로 구문해서 여러 그림자 효과를 입힐 수 있습니다. 박스 그림자는 요소에서의 수평수직 거리(오프셋), 흐릿함과 확산 정도, 색상으로 이루어집니다.
+
+box-shadow 속성은 거의 모든 요소의 테두리에서 그림자를 드리울 수 있도록 도와줍니다. border-radius가 요소에 함께 적용됐다면 박스 그림자의 모서리도 똑같이 둥근 모서리를 갖게 됩니다. 여러 그림자의 z축 순서는 text-shadow와 동일하게 처음 그림자일수록 위로 올라옵니다.
+
+박스 그림자 생성기는 상호작용형 도구로, 쉽게 box-shadow의 값을 생성할 수 있습니다.
+
+**[예제]**
+
+```css
+box-shadow: 10px 5px 5px red;
+box-shadow: 60px -16px teal;
+box-shadow: 12px 12px 2px 1px rgba(0, 0, 255, 0.2);
+box-shadow: inset 5em 1em gold;
+box-shadow: 3px 3px red, -1em 0 0.4em olive;
+```
+
+**[구문]**
+
+```css
+/* offset-x | offset-y | color */
+box-shadow: 60px -16px teal;
+
+/* offset-x | offset-y | blur-radius | color */
+box-shadow: 10px 5px 5px black;
+
+/* offset-x | offset-y | blur-radius | spread-radius | color */
+box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+
+/* inset | offset-x | offset-y | color */
+box-shadow: inset 5em 1em gold;
+
+/* Any number of shadows, separated by commas */
+box-shadow: 3px 3px red, -1em 0 0.4em olive;
+
+/* Global keywords */
+box-shadow: inherit;
+box-shadow: initial;
+box-shadow: unset;
+```
+
+**하나의 box-shadow는 다음 구성요소로 지정할 수 있습니다.**
+
+```
++ 두 개에서 네 개의 <length> 값.
+  + 두 개의 값을 사용하면 <offset-x><offset-y>로 분석합니다.
+  + 세 번째 값이 주어지면 <blur-radius>로 분석합니다.
+  + 네 번째 값이 주어지면 <spread-radius>로 분석합니다.
++ 선택사항으로 inset 키워드.
++ 선택사항으로 <color> 값.
+```
+
+**[값]**
+
+```
+inset:
+값을 지정하지 않으면(기본값) 요소가 공중에 떠있는 것처럼 밖에 드리우는 그림자가 됩니다.
+inset 키워드가 존재하면 요소가 움푹 들어간 것처럼 그림자가 요소의 테두리 안, 배경색 위, 내부 콘텐츠 밑에 그려집니다.
+```
+
+```
+<offset-x> <offset-y>:
+그림자의 위치를 설정하는 두 개의 <length> 값입니다. <offset-x>는 수평 거리를 의미하며 음수 값은 그림자를 요소의 왼쪽에 표시합니다. <offset-y>는 수직 거리를 의미하며 음수 값은 그림자를 요소의 위쪽에 표시합니다. 가능한 단위는 <length>를 참고하세요.
+두 값이 모두 0이면 그림자가 요소 바로 뒤쪽에 위치하며, <blur-radius> 또는 <spread-radius>가 존재하면 흐려지는 효과를 볼 수 있습니다.
+```
+
+```
+<blur-radius>:
+세 번째 <length> 값입니다. 크면 클 수록 그림자 테두리가 흐려지므로 크기는 더 커지고 색은 더 밝아집니다. 음수 값은 사용할 수 없습니다. 값을 설정하지 않으면 0이 되어 테두리가 선명해집니다. 명세는 흐림 효과의 지름을 어떻게 계산해야 하는지 정확한 알고리즘은 명시하지 않았지만 대신 다음과 같이 설명하고 있습니다.
+```
+
+```
+<spread-radius>:
+네 번째 <length> 값입니다. 양수 값은 그림자가 더 커지고 확산하며, 음수 값은 그림자가 줄어듭니다. 기본값은 0(그림자와 요소 크기 동일)입니다.
+```
+
+```
+<color>:
+가능한 키워드와 표기법은 <color>를 참고하세요.
+기본값은 브라우저에 따라 다릅니다. 보통 color 속성의 값을 사용하지만, Safari는 투명한 그림자가 기본값입니다.
+```
+
+---
