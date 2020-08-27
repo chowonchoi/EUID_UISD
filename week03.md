@@ -414,3 +414,143 @@ inset 키워드가 존재하면 요소가 움푹 들어간 것처럼 그림자�
 ```
 
 ---
+
+- ## 200827 목요일
+
+## 폼 요소
+
+- **< form > 요소**  
+  폼은 텍스트 필드, 버튼, 체크박스와 같은 폼 컨트롤을 포함하는 웹 페이지의 컴포넌트를 말합니다.  
+  (정보를 제출하기 위한 대화형 컨트롤을 포함하는 문서 구획)  
+  사용자와 인터랙션을 수행한 결과(예: 검색)를 서버로 보낼 수 있습니다.
+  <br/><br/>
+
+  form 요소를 꾸밀 땐, 모든 elements의 유효성을 나타내는 CSS :valid와 :invalid 의사 클래스를 사용할 수 있습니다.
+
+[예제-html]
+
+```html
+<form action="" method="get" class="form-example">
+  <div class="form-example">
+    <label for="name">Enter your name: </label>
+    <input type="text" name="name" id="name" required />
+  </div>
+  <div class="form-example">
+    <label for="email">Enter your email: </label>
+    <input type="email" name="email" id="email" required />
+  </div>
+  <div class="form-example">
+    <input type="submit" value="Subscribe!" />
+  </div>
+</form>
+```
+
+[예제-css]
+
+```css
+form.form-example {
+  display: table;
+}
+
+div.form-example {
+  display: table-row;
+}
+
+label,
+input {
+  display: table-cell;
+  margin-bottom: 10px;
+}
+
+label {
+  padding-right: 10px;
+}
+```
+
+- **< input > 요소**  
+  웹 기반 양식에서 사용자의 데이터를 받을 수 있는 대화형 컨트롤을 생성합니다. 사용자 에이전트에 따라서 다양한 종류의 입력 데이터 유형과 컨트롤 위젯이 존재합니다. 입력 유형과 특성의 다양한 조합 가능성으로 인해, < input > 요소는 HTML에서 제일 강력하고 복잡한 요소 중 하나입니다.<br/><br/>
+  < input > 요소의 동작 방식은 type 특성에 따라 현격히 달라지므로, 각각의 유형은 별도의 참고 문서에서 더 자세히 확인할 수 있습니다. 특성을 지정하지 않은 경우, 기본값은 text입니다.
+
+[예제-html]
+
+```html
+<label for="name">Name (4 to 8 characters):</label>
+
+<input
+  type="text"
+  id="name"
+  name="name"
+  required
+  minlength="4"
+  maxlength="8"
+  size="10"
+/>
+```
+
+[예제-css]
+
+```css
+label {
+  display: block;
+  font: 1rem "Fira Sans", sans-serif;
+}
+
+input,
+label {
+  margin: 0.4rem 0;
+}
+```
+
+- **< label > 요소**  
+  컨트롤에 레이블(이름)을 붙이고자 할 경우 사용합니다.  
+  (사용자 인터페이스 항목의 설명을 나타냅니다.)  
+  < label > 을 < input > 요소와 연결하면 몇 가지 이점이 있습니다.<br/>
+
+  - label 텍스트는 텍스트 입력과 시각적으로 관련이 있을뿐만 아니라 프로그래밍적으로도 관련이 있습니다. 예를 들어, 화면리더기(screenreader) 는 폼 입력(form input)에서 label 을 읽어서 보조기술(assistive technology) 사용자가 입력해야하는 텍스트가 무엇인지 더 쉽게 이해할 수 있게 합니다. <br/>
+  - 관련 label 을 클릭해서 input 자체에 초점을 맞추거나 활성화를 시킬 수 있습니다. (활성되어서)  
+    늘어난 누를 수 있는 영역(hit area)은 터치스크린 사용자를 포함해 입력하려하는 모든 사람에게 이점을 줍니다.<br/><br/>
+
+    < label > 을 < input > 요소와 연관시키려면, < input > 에 id 속성을 넣어야합니다. 그런 다음 < label > 에 id 와 같은 값의 for 속성을 넣어야합니다.  
+    또는, < label > 안에 < input > 을 중첩시킬 수 있습니다. 이 경우 연관이 암시적이므로 for 및 id속성이 필요 없습니다.
+
+[예제-html]
+
+```html
+<form action="/" method="GET">
+  <label>이름 <input type="text" placeholder="이민주" maxlength="4" /></label>
+</form>
+
+<form action="/" method="GET">
+  <label for="user_name">이름</label>
+  <input id="user_name" name="user_name" type="text" placeholde"이민주"
+  maxlength="4">
+</form>
+
+<form action="/" method="GET">
+    <table>
+      <tr>
+        <th>
+          <label for"user_name">이름</label>
+        </th>
+      </tr>
+      <tr>
+        <td>
+          <input id="user_name" name="user_name" type="text" placeholder="주민하" maxlength="4">
+        </td>
+      </tr>
+    </table>
+</form>
+```
+
+[예제-css]
+
+```css
+.preference {
+  display: flex;
+  justify-content: space-between;
+  width: 60%;
+  margin: 0.5rem;
+}
+```
+
+---
