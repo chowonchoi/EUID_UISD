@@ -554,3 +554,48 @@ label {
 ```
 
 ---
+
+- ## 200828 금요일
+
+## 멀티 컬럼 레이아웃
+
+**멀티 컬럼 레이아웃 모듈은 이전 CSS 방법 보다 유연성을 제공합니다.**  
+// 컬럼 개수 또는 폭 설정  
+// count와 widht 둘 중 하나 값만 설정 (다른 하나는 auto 여야 함)
+
+```
+  * column-count
+  * column-widht
+  * columns
+```
+
+```css
+[예시]
+columns : 12em; // column-widht: 12em; column-count: auto
+
+columns : auto 12em; // column-widht: 12em; column-count: auto
+
+columns : 2; // column-widht: auto; column-count: 2
+
+columns : 2 auto; // column-widht: auto; column-count: 2
+
+columns : auto; // column-widht: auto; column-count: auto
+
+columns : auto auto; // column-widht: auto; column-count: auto
+```
+
+// 컬럼 간격 또는 구분 선 설정
+
+- column-gap
+- column-rule
+  - column-rule-color
+  - column-rule-style
+  - column-rule-widht
+
+// 컬럼 병향  
+column-span
+
+// 컬럼 채우기  
+column-fill
+
+---
